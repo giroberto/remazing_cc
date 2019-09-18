@@ -26,14 +26,17 @@ Project:
   ###  make build
   ### cd docker && docker build --no-cache -t php7-alpine . && cd ..
  
+ 
  To start the php and postgresql server(you should keep this running to execute the next steps)
   ###  make execute
   ###  docker-compose up
-  
+ 
+ 
  To install the necessary npm packages and create the datatabase
   ### make first_run
   ### docker-compose exec web npm install && docker-compose exec web npm run prod && docker-compose exec web php artisan migrate
-  
+ 
+ 
  To seed the database
   ### make seed
   ### docker-compose exec web php artisan seed
