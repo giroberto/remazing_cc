@@ -28,7 +28,7 @@ Project:
   make build | cd docker <br> docker build --no-cache -t php7-alpine . <br> cd ..
  
  
- ### To install the necessary npm packages and create the datatabase
+ ### To install the necessary packages
  With make | Without make
   ------------ | -------------
   make first_run | docker-compose up --no-start <br> docker-compose run web composer install <br> docker-compose run web npm install <br> docker-compose run web npm run prod 
@@ -40,7 +40,7 @@ Project:
   make execute | docker-compose up
  
  
- ### To seed the database( you can run multiple times to increase the amount of data)
+ ### To create and seed the database( you can run seed multiple times to increase the amount of data)
  With make | Without make
   ------------ | -------------
   make seed | docker-compose exec web php artisan migrate <br> docker-compose exec web php artisan db:seed
