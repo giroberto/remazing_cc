@@ -47,4 +47,4 @@ Project:
 
 
 ## How to run
- Make sure docker-compose is running and access http://localhost:8080
+ Make sure docker-compose is running and access http://localhost:8080, create an account and the data will be shown, you can then filter by price, reviews, rating and date.
