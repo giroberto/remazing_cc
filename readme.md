@@ -48,3 +48,8 @@ Project:
 
 ## How to run
  Make sure docker-compose is running and access http://localhost:8080, create an account and the data will be shown, you can then filter by price, reviews, rating and date.
+ 
+ 
+ 
+ ## Stop and clean up
+   After testing you can stop the server with ctrl+c(or Strg+c) and run a *docker-compose down* to clean up space used by the containers.
