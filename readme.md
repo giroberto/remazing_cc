@@ -19,26 +19,30 @@ Project:
   
   First, check the .env file and set the number of products to be seeded, on my machine, each million took about 30 seconds
   
-  I did a Makefile with all necessary commands. If you do not have make installed, run the second command of each section
+  I did a Makefile with all necessary commands. If you do not have make installed, run the second command of each section. **Execute only one of them**
   The steps to execute are
   
-  To create the image
-  ###  make build
-  ### cd docker && docker build --no-cache -t php7-alpine . && cd ..
+  ###  To create the image
+  With make | Without make
+  ------------ | -------------
+  make build | cd docker && docker build --no-cache -t php7-alpine . && cd ..
  
  
- To start the php and postgresql server(you should keep this running to execute the next steps)
-  ###  make execute
-  ###  docker-compose up
+ ### To start the php and postgresql server(you should keep this running to execute the next steps)
+ With make | Without make
+  ------------ | -------------
+  make execute | docker-compose up
  
  
- To install the necessary npm packages and create the datatabase
-  ### make first_run
-  ### docker-compose exec web npm install && docker-compose exec web npm run prod && docker-compose exec web php artisan migrate
+ ### To install the necessary npm packages and create the datatabase
+ With make | Without make
+  ------------ | -------------
+  make first_run | docker-compose exec web npm install && docker-compose exec web npm run prod && docker-compose exec web php artisan migrate
  
  
- To seed the database
-  ### make seed
-  ### docker-compose exec web php artisan seed
+ ### To seed the database
+ With make | Without make
+  ------------ | -------------
+  make seed | docker-compose exec web php artisan seed
 
 
