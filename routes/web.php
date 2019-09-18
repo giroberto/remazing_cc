@@ -14,9 +14,5 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/stats', 'StatsController@getKpiStats');
-Route::get('/price', 'StatsController@getPriceKpi');
-Route::get('/review', 'StatsController@getReviewKpi');
-Route::get('/rating', 'StatsController@getRatingKpi');
-Route::get('/date', 'StatsController@getDateKpi');
 
 Auth::routes();

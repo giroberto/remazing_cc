@@ -12,7 +12,13 @@ class Product extends Model
 {
     public $timestamps = false;
 
-    public function getPricesStats($query,$request)
+    /**
+     * Generate the columns about prices
+     * @param $query
+     * @param $request
+     * @return array
+     */
+    public function getPricesStats($query, $request)
     {
         $prices = $this->getMinAndMaxPrice();
         $prices->minprice = $request->get('minprice') ? $request->get('minprice') : $prices->minprice;
@@ -29,7 +35,13 @@ class Product extends Model
         }, $priceRanges, array_keys($priceRanges));
     }
 
-    public function getReviewsStats($query,$request)
+    /**
+     * Generate the columns about Reviews
+     * @param $query
+     * @param $request
+     * @return array
+     */
+    public function getReviewsStats($query, $request)
     {
         $reviews = $this->getMinAndMaxReviews();
         $reviews->minreviews = $request->get('minreviews') ? $request->get('minreviews') : $reviews->minreviews;
@@ -46,6 +58,11 @@ class Product extends Model
         }, $reviewRanges, array_keys($reviewRanges));
     }
 
+    /**
+     * Generate the columns about ratings
+     * @param $query
+     * @return mixed
+     */
     public function getRatingsStats($query)
     {
         $query->selectRaw('count(*) filter( where avr_rating < 1 ) as "star_Below 1 star",
@@ -56,6 +73,12 @@ class Product extends Model
         return $query;
     }
 
+    /**
+     * Generate the columns about first listed dates
+     * @param $query
+     * @param $request
+     * @return mixed
+     */
     public function getFirstListedStats($query, $request)
     {
         $databaseDates = $this->getMinAndMaxFirstListedDate();
@@ -88,6 +111,12 @@ class Product extends Model
         }
     }
 
+    /**
+     * Filter the query
+     * @param $query
+     * @param $request
+     * @return mixed
+     */
     public function filterResults($query, $request)
     {
         if ($request->get('minprice'))
@@ -109,6 +138,11 @@ class Product extends Model
         return $query;
     }
 
+    /**
+     * Build the query and return the data
+     * @param $request
+     * @return array
+     */
     public function getAllStats($request)
     {
         $query = $this->query();
@@ -120,18 +154,25 @@ class Product extends Model
         return $query->first()->toArray();
     }
 
-
-
+    /**
+     * @return mixed
+     */
     private static function getMinAndMaxPrice()
     {
         return DB::selectOne('select MIN(price) as minprice, MAX(price) as maxprice from products');
     }
 
+    /**
+     * @return mixed
+     */
     private static function getMinAndMaxReviews()
     {
         return DB::selectOne('select MIN(reviews) as minreviews, MAX(reviews) as maxreviews from products');
     }
 
+    /**
+     * @return mixed
+     */
     private static function getMinAndMaxFirstListedDate()
     {
         return DB::selectOne('select MIN(first_listed) as mindate, MAX(first_listed) as maxdate from products');
