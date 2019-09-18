@@ -19,13 +19,19 @@ Project:
   
   First, check the .env file and set the number of products to be seeded, on my machine, each million took about 30 seconds
   
-  I did a Makefile with all necessary commands. If you do not have make installed, run the second command of each section. **Execute only one of them**
-  The steps to execute are
+  I did a Makefile with all necessary commands. If you do not have make installed, run the commands no second column of each section. **Execute only one of them**
+  The steps to execute are:
   
   ###  To create the image
   With make | Without make
   ------------ | -------------
-  make build | cd docker && docker build --no-cache -t php7-alpine . && cd ..
+  make build | cd docker <br> docker build --no-cache -t php7-alpine . <br> cd ..
+ 
+ 
+ ### To install the necessary npm packages and create the datatabase
+ With make | Without make
+  ------------ | -------------
+  make first_run | docker-compose up --no-start <br> docker-compose run web composer install <br> docker-compose run web npm install <br> docker-compose run web npm run prod 
  
  
  ### To start the php and postgresql server(you should keep this running to execute the next steps)
@@ -34,15 +40,11 @@ Project:
   make execute | docker-compose up
  
  
- ### To install the necessary npm packages and create the datatabase
+ ### To seed the database( you can run multiple times to increase the amount of data)
  With make | Without make
   ------------ | -------------
-  make first_run | docker-compose exec web npm install && docker-compose exec web npm run prod && docker-compose exec web php artisan migrate
- 
- 
- ### To seed the database
- With make | Without make
-  ------------ | -------------
-  make seed | docker-compose exec web php artisan seed
+  make seed | docker-compose exec web php artisan migrate <br> docker-compose exec web php artisan db:seed
 
 
+## How to run
+ Make sure docker-compose is running and access http://localhost:8080
