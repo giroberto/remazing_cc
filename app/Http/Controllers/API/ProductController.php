@@ -1,11 +1,11 @@
 <?php
 
-namespace Remazing_cc\Http\Controllers\API;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Remazing_cc\Http\Controllers\Controller;
-use Remazing_cc\models\Product;
+use App\Http\Controllers\Controller;
+use App\models\Product;
 
 class ProductController extends Controller
 {
@@ -18,7 +18,6 @@ class ProductController extends Controller
     {
         Input::all();
         $products = Product::query();
-        //TODO shorten this
         if (Input::query('minPrice')) {
             $products->where('price', '>', Input::query('minPrice'));
         }
@@ -26,10 +25,10 @@ class ProductController extends Controller
             $products->where('price', '<', Input::query('maxPrice'));
         }
         if (Input::query('minReviews')) {
-            $products->where('reviews_counter', '>', Input::query('minReviews'));
+            $products->where('reviews', '>', Input::query('minReviews'));
         }
         if (Input::query('maxReviews')) {
-            $products->where('reviews_counter', '<', Input::query('maxReviews'));
+            $products->where('reviews', '<', Input::query('maxReviews'));
         }
         if (Input::query('dateFirstListedMin')) {
             $products->where('first_listed', '>', Input::query('dateFirstListedMin'));

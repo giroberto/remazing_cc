@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Remazing_cc\Providers\AppServiceProvider::class,
-        Remazing_cc\Providers\AuthServiceProvider::class,
-        // Remazing_cc\Providers\BroadcastServiceProvider::class,
-        Remazing_cc\Providers\EventServiceProvider::class,
-        Remazing_cc\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 

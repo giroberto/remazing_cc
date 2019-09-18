@@ -10644,8 +10644,3 @@ a.text-dark:focus {
   }
 }
 
-.graph-line {
-  display: flex;
-  flex-direction: column;
-}
-

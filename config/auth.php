@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Remazing_cc\User::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

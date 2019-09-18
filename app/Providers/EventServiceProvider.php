@@ -1,6 +1,6 @@
 <?php
 
-namespace Remazing_cc\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;

@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Remazing_cc\Models\Product;
+use App\Models\Product;
 use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
@@ -12,7 +12,7 @@ $factory->define(Product::class, function (Faker $faker) {
     return [
         'title' => $faker->userName,
         'price' => $faker->randomFloat(2, 0, $max_product_price),
-        'reviews_count' => $faker->randomNumber,
+        'reviews' => $faker->randomNumber,
         'avr_rating' => $faker->randomFloat(1, 0, 5),
         'first_listed' => $faker->dateTimeBetween($first_listed_price, $last_listed_price),
     ];
