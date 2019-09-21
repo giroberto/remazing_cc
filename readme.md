@@ -31,7 +31,7 @@ Project:
  ### To install the necessary packages
  With make | Without make
   ------------ | -------------
-  make first_run | docker-compose up --no-start <br> docker-compose run web composer install <br> docker-compose run web npm install <br> docker-compose run web npm run prod 
+  make before_first_run | docker-compose up --no-start <br> docker-compose run web composer install <br> docker-compose run web npm install <br> docker-compose run web npm run prod 
  
  
  ### To start the php and postgresql server(you should keep this running to execute the next steps)
